@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ev7ra0cqvxcy"]
+
+[ext_resource type="Texture2D" uid="uid://c6202iqfdmcq2" path="res://assets/textures/menu/caughtMe.jpg" id="1_81inb"]
+[ext_resource type="Script" path="res://scripts/menu/loop.gd" id="1_vv4pu"]
+[ext_resource type="Texture2D" uid="uid://ceb0uqi104wd8" path="res://assets/textures/menu/catchMeAgain.jpg" id="2_ody81"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2g1ny"]
+texture = ExtResource("1_81inb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xmo5"]
+texture = ExtResource("2_ody81")
+
+[node name="Loop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vv4pu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_2g1ny")
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4xmo5")

@@ -1,0 +1,165 @@
+[gd_scene load_steps=11 format=3 uid="uid://bl104jvjui6bt"]
+
+[ext_resource type="Texture2D" uid="uid://5wn0yfww3sw" path="res://assets/textures/grassTexture2.PNG" id="1_rpod0"]
+[ext_resource type="PackedScene" uid="uid://bh0ba4knywjh3" path="res://scenes/player.tscn" id="5_b52ph"]
+[ext_resource type="PackedScene" uid="uid://dfeqhxxehelkx" path="res://scenes/spawn_area.tscn" id="6_qh2rb"]
+[ext_resource type="PackedScene" uid="uid://b2hprgjhpow31" path="res://scenes/kagari.tscn" id="6_ydmfp"]
+[ext_resource type="AudioStream" uid="uid://duvpamnvpidwb" path="res://assets/music/rewriteReply.mp3" id="7_87jy3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_my6a8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_py4gp"]
+sky_material = SubResource("ProceduralSkyMaterial_my6a8")
+
+[sub_resource type="Environment" id="Environment_eg1yu"]
+background_mode = 2
+sky = SubResource("Sky_py4gp")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.690411, 0.719032, 0.764006, 1)
+fog_light_energy = 0.84
+fog_sun_scatter = 0.05
+fog_density = 0.0261
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmmej"]
+albedo_texture = ExtResource("1_rpod0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3euks"]
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 3.17754, 0)
+light_color = Color(0.718006, 0.60196, 0.354319, 1)
+light_energy = 0.515
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eg1yu")
+
+[node name="Tree" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGMesh3D" parent="Tree"]
+transform = Transform3D(120.379, 0, 0, 0, 120.379, 0, 0, 0, 120.379, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_rmmej")
+use_collision = true
+mesh = SubResource("PlaneMesh_3euks")
+
+[node name="Kagari" parent="." instance=ExtResource("6_ydmfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93357, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("5_b52ph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52846)
+
+[node name="AreaList" type="Node3D" parent="."]
+transform = Transform3D(2.89651, 0, 0, 0, 2.89651, 0, 0, 0, 2.89651, 0, 0, 0)
+
+[node name="SpawnArea" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -16.4454, -0.0549207, -9.24813)
+
+[node name="point1" type="Node3D" parent="AreaList/SpawnArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14413, 0, 1.06213)
+
+[node name="SpawnArea2" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -16.4454, -0.0549207, -0.506958)
+
+[node name="point2" type="Node3D" parent="AreaList/SpawnArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172003, 0, 2.38893)
+
+[node name="SpawnArea3" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -9.24592, -0.0549207, -5.00473)
+
+[node name="point3" type="Node3D" parent="AreaList/SpawnArea3"]
+
+[node name="SpawnArea4" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -9.24592, -0.0549207, -15.0675)
+
+[node name="point4" type="Node3D" parent="AreaList/SpawnArea4"]
+
+[node name="SpawnArea5" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 0.0539951, -0.0549207, -15.0675)
+
+[node name="point5" type="Node3D" parent="AreaList/SpawnArea5"]
+
+[node name="SpawnArea6" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 11.7005, -0.0549207, -4.30202)
+
+[node name="point6" type="Node3D" parent="AreaList/SpawnArea6"]
+
+[node name="SpawnArea7" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 0.0539951, -0.0549207, 14.2385)
+
+[node name="point7" type="Node3D" parent="AreaList/SpawnArea7"]
+
+[node name="SpawnArea8" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -12.237, -0.0549207, 7.69208)
+
+[node name="point8" type="Node3D" parent="AreaList/SpawnArea8"]
+
+[node name="SpawnArea9" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -12.237, -0.0549207, 15.1648)
+
+[node name="point9" type="Node3D" parent="AreaList/SpawnArea9"]
+
+[node name="SpawnArea10" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 11.3509, -0.0549207, 15.1648)
+
+[node name="point10" type="Node3D" parent="AreaList/SpawnArea10"]
+
+[node name="SpawnArea11" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 11.3509, -0.0549207, 2.65852)
+
+[node name="point11" type="Node3D" parent="AreaList/SpawnArea11"]
+
+[node name="SpawnArea12" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 11.3509, -0.0549207, -10.798)
+
+[node name="point12" type="Node3D" parent="AreaList/SpawnArea12"]
+
+[node name="SpawnArea13" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 0.877818, -0.0549207, 18.6257)
+
+[node name="point13" type="Node3D" parent="AreaList/SpawnArea13"]
+
+[node name="SpawnArea14" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -16.9905, -0.0549207, -3.13152)
+
+[node name="point14" type="Node3D" parent="AreaList/SpawnArea14"]
+
+[node name="SpawnArea15" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 15.4872, -0.0549207, -3.13152)
+
+[node name="point15" type="Node3D" parent="AreaList/SpawnArea15"]
+
+[node name="SpawnArea16" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 14.0758, -0.0549207, -12.6514)
+
+[node name="point16" type="Node3D" parent="AreaList/SpawnArea16"]
+
+[node name="SpawnArea17" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, 10.7896, -0.0549207, 14.5135)
+
+[node name="point17" type="Node3D" parent="AreaList/SpawnArea17"]
+
+[node name="SpawnArea18" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -6.05053, -0.0549207, 15.5965)
+
+[node name="point18" type="Node3D" parent="AreaList/SpawnArea18"]
+
+[node name="SpawnArea19" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -13.4515, -0.0549216, 0.933779)
+
+[node name="point19" type="Node3D" parent="AreaList/SpawnArea19"]
+
+[node name="SpawnArea20" parent="AreaList" instance=ExtResource("6_qh2rb")]
+transform = Transform3D(4.684, 0, 0, 0, 4.684, 0, 0, 0, 4.684, -11.388, -0.0549216, -10.0195)
+
+[node name="point20" type="Node3D" parent="AreaList/SpawnArea20"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_87jy3")
+autoplay = true

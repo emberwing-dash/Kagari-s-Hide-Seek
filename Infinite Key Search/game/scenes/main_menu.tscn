@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi2xirrubvnyd"]
+
+[ext_resource type="Texture2D" uid="uid://w1tiitkbitsb" path="res://assets/textures/menu/menuBG.png" id="1_ekn26"]
+[ext_resource type="Script" path="res://scripts/menu/main_menu.gd" id="1_lrmc4"]
+[ext_resource type="Texture2D" uid="uid://bp6c2e76calbx" path="res://assets/textures/menu/playButton.png" id="2_ni288"]
+[ext_resource type="Texture2D" uid="uid://dyc8hgvi1kn24" path="res://assets/textures/menu/ReWrite_logo.png" id="3_23n2t"]
+[ext_resource type="Texture2D" uid="uid://da74foaw7d0m2" path="res://assets/textures/menu/quitButton.png" id="3_xg200"]
+[ext_resource type="StyleBox" uid="uid://buh3s2o8472ar" path="res://assets/styles/start.tres" id="5_r5ekv"]
+[ext_resource type="StyleBox" uid="uid://1auyweodc4ub" path="res://assets/styles/quit.tres" id="7_lk81q"]
+[ext_resource type="AudioStream" uid="uid://cv2qciobp4r7g" path="res://assets/music/rewriteOP.wav" id="8_qv8rv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0bubl"]
+texture = ExtResource("1_ekn26")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njxuv"]
+texture = ExtResource("3_23n2t")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08dxy"]
+texture = ExtResource("2_ni288")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylann"]
+texture = ExtResource("3_xg200")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lrmc4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0bubl")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -900.0
+offset_bottom = -515.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_njxuv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 650.0
+
+[node name="Play" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 81
+theme_override_styles/normal = SubResource("StyleBoxTexture_08dxy")
+theme_override_styles/hover = ExtResource("5_r5ekv")
+theme_override_styles/pressed = ExtResource("5_r5ekv")
+text = "           "
+
+[node name="Quit" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 81
+theme_override_styles/normal = SubResource("StyleBoxTexture_ylann")
+theme_override_styles/hover = ExtResource("7_lk81q")
+theme_override_styles/pressed = ExtResource("7_lk81q")
+text = "           "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_qv8rv")
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Quit" to="." method="_on_quit_pressed"]

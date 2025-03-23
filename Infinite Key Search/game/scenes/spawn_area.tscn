@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfeqhxxehelkx"]
+
+[ext_resource type="Script" path="res://scripts/tree/spawn_area.gd" id="1_sd1g5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlcle"]
+size = Vector3(1, 0.170166, 1)
+
+[node name="SpawnArea" type="Area3D"]
+transform = Transform3D(26.893, 0, 0, 0, 26.893, 0, 0, 0, 26.893, 0, 0, 0)
+script = ExtResource("1_sd1g5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.014917, 0)
+shape = SubResource("BoxShape3D_xlcle")
+
+[node name="RandomPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395697, 0, -0.246849)
+
+[node name="point1" type="Node3D" parent="RandomPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.738777, 0, 0)
+
+[node name="point2" type="Node3D" parent="RandomPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022173, 0, 0.530578)
+
+[node name="point3" type="Node3D" parent="RandomPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577364, 0, 0.530578)
+
+[node name="point4" type="Node3D" parent="RandomPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113128, 0, -0.0312529)

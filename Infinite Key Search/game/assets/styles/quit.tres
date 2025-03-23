@@ -1,0 +1,7 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://1auyweodc4ub"]
+
+[ext_resource type="Texture2D" uid="uid://da74foaw7d0m2" path="res://assets/textures/menu/quitButton.png" id="1_pjj3l"]
+
+[resource]
+texture = ExtResource("1_pjj3l")
+modulate_color = Color(0.625597, 0.625597, 0.625597, 1)
